@@ -6,7 +6,7 @@
 #    By: niccheva <niccheva@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/09 13:23:47 by niccheva          #+#    #+#              #
-#    Updated: 2016/09/13 13:43:36 by niccheva         ###   ########.fr        #
+#    Updated: 2016/09/13 13:57:42 by niccheva         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -64,6 +64,7 @@ SOURCES		+=	json_get_member.c
 SOURCES		+=	json_get_object.c
 SOURCES		+=	json_get_array.c
 
+SOURCES		+=	json_entity_size.c
 
 OBJECTS		=	$(patsubst %.c, $(BUILD)/$(DOBJECTS)%.o, $(SOURCES))
 
