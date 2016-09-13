@@ -5,90 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: niccheva <niccheva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/03 15:46:59 by niccheva          #+#    #+#             */
-/*   Updated: 2016/07/06 09:42:47 by niccheva         ###   ########.fr       */
+/*   Created: 2016/09/12 17:24:53 by niccheva          #+#    #+#             */
+/*   Updated: 2016/09/13 09:13:59 by niccheva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef JSON_H
 # define JSON_H
 
-# include "libft.h"
-# include "list.h"
 # include "json_types.h"
 
-/*
-** This file provides some functions to manage JSON entities.
-** - json_get_boolean() allow to get the boolean which stocked in entity.
-** - json_get_number() allow to get the number which stocked in entity.
-** - json_get_string() allow to get the string which stocked in entity.
-** - json_get_array() allow to get the JSON object which stocked in entity.
-** - json_get_object() allow to get the JSON array which stocked in entity.
-** - json_get_entity_with_key() allow to get the JSON entity
-**   which stocked in the object with the key.
-** - json_get_entity_at() allow to get the JSON entity
-**   which stocked in the array at index.
-*/
+typedef void	(*t_json_for_each_function)(const t_json_entity *);
+typedef t_json_entity	*(*t_json_collect_function)(const t_json_entity *);
 
-/*
-** json_get_boolean return the boolean which is stocked in the entity.
-** If entity haven't boolean, error is set.
-** Please use the json_free_error() function to free error.
-*/
-BOOL							json_get_boolean(t_json_entity *entity,
-												t_json_error *error);
-/*
-** json_get_number return the number which is stocked in the entity.
-** If entity haven't number, error is set.
-** Please use the json_free_error() function to free error.
-*/
-double							json_get_number(t_json_entity *entity,
-												t_json_error *error);
-/*
-** json_get_string return the string which is stocked in the entity.
-** If entity haven't string, error is set.
-** Please use the json_free_error() function to free error.
-*/
-char							*json_get_string(t_json_entity *entity,
-												t_json_error *error);
-/*
-** json_get_array return the array which is stocked in the entity.
-** If entity haven't array, error is set.
-** Please use the json_free_error() function to free error.
-*/
-t_json_array					*json_get_array(t_json_entity *entity,
-											t_json_error *error);
-/*
-** json_get_object return the object which is stocked in the entity.
-** If entity haven't object, error is set.
-** Please use the json_free_error() function to free error.
-*/
-t_json_object					*json_get_object(t_json_entity *entity,
-												t_json_error *error);
-/*
-** json_get_entity_with_key return the entity which is stocked with key
-** in the object.
-** If object haven't entity named key, error is set.
-** Please use the json_free_error() function to free error.
-*/
-t_json_entity					*json_get_entity_with_key(t_json_object *object,
-														const char *key,
-														t_json_error *error);
-/*
-** json_get_entity_at return the entity which is stocked in the array at index.
-** If array haven't entity at index, error is set.
-** Please use the json_free_error() function to free error.
-*/
-t_json_entity					*json_get_entity_at(t_json_array *array,
-												const uint64_t *key,
-												t_json_error *error);
+t_json_member	*json_create_member(const t_json_entity *key,
+									const t_json_entity *value);
+t_json_object	*json_create_object(const t_json_entity *member);
+t_json_array	*json_create_array(const t_json_entity *value);
 
-/*
-** json_parse_string take a string parameter and return a JSON entity.
-** If an error occured, the error parameter is filled and the function return NULL.
-*/
-t_json_entity					*json_parse_string(const char *json, t_json_error *error);
+t_json_entity	*json_create_null_entity(void);
+t_json_entity	*json_create_bool_entity(const bool *value);
+t_json_entity	*json_create_number_entity(const double value);
+t_json_entity	*json_create_string_entity(const char *value);
+t_json_entity	*json_create_member_entity(const t_json_member *member);
+t_json_entity	*json_create_object_entity(const t_json_object *object);
+t_json_entity	*json_create_array_entity(const t_json_array *array);
 
-BOOL							json_entity_is_null(const t_json_entity *entity);
+t_json_entity	*json_parse_null(const char *str);
+t_json_entity	*json_parse_bool(const char *str);
+t_json_entity	*json_parse_number(const char *str);
+t_json_entity	*json_parse_string(const char *str);
+t_json_entity	*json_parse_member(const char *str);
+t_json_entity	*json_parse_object(const char *str);
+t_json_entity	*json_parse_array(const char *str);
+t_json_entity	*json_parse_entity(const char *str);
+
+bool			json_is_null(const t_json_entity *entity);
+bool			json_get_bool(const t_json_entity *entity);
+double			json_get_number(const t_json_entity *entity);
+char			*json_get_string(const t_json_entity *entity);
+t_json_member	*json_get_member(const t_json_entity *entity);
+t_json_object	*json_get_object(const t_json_entity *entity);
+t_json_array	*json_get_array(const t_json_entity *entity);
+
+void			json_for_each(const t_json_entity *entity,
+							t_json_for_each_function);
+
+t_json_entity	*json_collect(const t_json_entity *entity,
+							t_json_collect_function);
+
+void			json_put_entity(const t_json_entity *entity);
+char			*json_to_string(const t_json_entity *entity);
+
+void			json_delete_null_entity(t_json_entity *entity);
+void			json_delete_bool_entity(t_json_entity *entity);
+void			json_delete_number_entity(t_json_entity *entity);
+void			json_delete_string_entity(t_json_entity *entity);
+void			json_delete_member_entity(t_json_entity *entity);
+void			json_delete_object_entity(t_json_entity *entity);
+void			json_delete_array_entity(t_json_entity *entity);
+void			json_delete_entity(t_json_entity *entity);
+
+t_json_entity	*json_get_entity_at(const t_json_entity *array,
+									const size_t index);
+t_json_entity	*json_get_entity_with_key(const t_json_entity *object,
+										const char *key);
 
 #endif
