@@ -6,7 +6,7 @@
 #    By: niccheva <niccheva@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/09 13:23:47 by niccheva          #+#    #+#              #
-#    Updated: 2016/09/13 11:41:52 by niccheva         ###   ########.fr        #
+#    Updated: 2016/09/13 11:52:43 by niccheva         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -29,7 +29,9 @@ INCLUDES	+=	-I../liblist/includes
 SOURCES		=	json_create_member.c
 SOURCES		+=	json_create_object.c
 SOURCES		+=	json_create_array.c
+
 SOURCES		+=	json_init_entity.c
+
 SOURCES		+=	json_create_null_entity.c
 SOURCES		+=	json_create_bool_entity.c
 SOURCES		+=	json_create_number_entity.c
@@ -37,6 +39,7 @@ SOURCES		+=	json_create_string_entity.c
 SOURCES		+=	json_create_member_entity.c
 SOURCES		+=	json_create_object_entity.c
 SOURCES		+=	json_create_array_entity.c
+
 SOURCES		+=	json_delete_entity.c
 SOURCES		+=	json_delete_null_entity.c
 SOURCES		+=	json_delete_bool_entity.c
@@ -45,9 +48,13 @@ SOURCES		+=	json_delete_string_entity.c
 SOURCES		+=	json_delete_member_entity.c
 SOURCES		+=	json_delete_object_entity.c
 SOURCES		+=	json_delete_entity.c
+
 SOURCES		+=	json_delete_member.c
 SOURCES		+=	json_delete_object.c
 SOURCES		+=	json_delete_array.c
+
+SOURCES		+=	json_add_array.c
+SOURCES		+=	json_add_array.c
 
 OBJECTS		=	$(patsubst %.c, $(BUILD)/$(DOBJECTS)%.o, $(SOURCES))
 

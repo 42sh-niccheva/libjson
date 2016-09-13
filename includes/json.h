@@ -6,7 +6,7 @@
 /*   By: niccheva <niccheva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/12 17:24:53 by niccheva          #+#    #+#             */
-/*   Updated: 2016/09/13 11:46:54 by niccheva         ###   ########.fr       */
+/*   Updated: 2016/09/13 11:50:17 by niccheva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ t_json_entity	*json_create_string_entity(char *value);
 t_json_entity	*json_create_member_entity(t_json_member *member);
 t_json_entity	*json_create_object_entity(t_json_object *object);
 t_json_entity	*json_create_array_entity(t_json_array *array);
+
+void			json_add_object(t_json_object *head, t_json_object *new);
+void			json_add_array(t_json_array *head, t_json_array *new);
 
 t_json_entity	*json_parse_null(const char *str);
 t_json_entity	*json_parse_bool(const char *str);
