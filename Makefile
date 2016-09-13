@@ -6,7 +6,7 @@
 #    By: niccheva <niccheva@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/09 13:23:47 by niccheva          #+#    #+#              #
-#    Updated: 2016/09/13 11:52:43 by niccheva         ###   ########.fr        #
+#    Updated: 2016/09/13 13:43:36 by niccheva         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -55,6 +55,15 @@ SOURCES		+=	json_delete_array.c
 
 SOURCES		+=	json_add_array.c
 SOURCES		+=	json_add_array.c
+
+SOURCES		+=	json_is_null.c
+SOURCES		+=	json_get_bool.c
+SOURCES		+=	json_get_number.c
+SOURCES		+=	json_get_string.c
+SOURCES		+=	json_get_member.c
+SOURCES		+=	json_get_object.c
+SOURCES		+=	json_get_array.c
+
 
 OBJECTS		=	$(patsubst %.c, $(BUILD)/$(DOBJECTS)%.o, $(SOURCES))
 

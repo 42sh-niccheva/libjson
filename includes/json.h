@@ -6,7 +6,7 @@
 /*   By: niccheva <niccheva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/12 17:24:53 by niccheva          #+#    #+#             */
-/*   Updated: 2016/09/13 11:50:17 by niccheva         ###   ########.fr       */
+/*   Updated: 2016/09/13 13:51:13 by niccheva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,7 @@ t_json_entity	*json_get_entity_at(const t_json_entity *array,
 									const size_t index);
 t_json_entity	*json_get_entity_with_key(const t_json_entity *object,
 										const char *key);
+
+size_t			json_entity_size(const t_json_entity *entity);
 
 #endif
