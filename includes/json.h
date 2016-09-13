@@ -6,7 +6,7 @@
 /*   By: niccheva <niccheva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/12 17:24:53 by niccheva          #+#    #+#             */
-/*   Updated: 2016/09/13 09:13:59 by niccheva         ###   ########.fr       */
+/*   Updated: 2016/09/13 11:46:54 by niccheva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,17 @@
 typedef void	(*t_json_for_each_function)(const t_json_entity *);
 typedef t_json_entity	*(*t_json_collect_function)(const t_json_entity *);
 
-t_json_member	*json_create_member(const t_json_entity *key,
-									const t_json_entity *value);
-t_json_object	*json_create_object(const t_json_entity *member);
-t_json_array	*json_create_array(const t_json_entity *value);
+t_json_member	*json_create_member(t_json_entity *key, t_json_entity *value);
+t_json_object	*json_create_object(t_json_entity *member);
+t_json_array	*json_create_array(t_json_entity *value);
 
 t_json_entity	*json_create_null_entity(void);
-t_json_entity	*json_create_bool_entity(const bool *value);
-t_json_entity	*json_create_number_entity(const double value);
-t_json_entity	*json_create_string_entity(const char *value);
-t_json_entity	*json_create_member_entity(const t_json_member *member);
-t_json_entity	*json_create_object_entity(const t_json_object *object);
-t_json_entity	*json_create_array_entity(const t_json_array *array);
+t_json_entity	*json_create_bool_entity(bool value);
+t_json_entity	*json_create_number_entity(double value);
+t_json_entity	*json_create_string_entity(char *value);
+t_json_entity	*json_create_member_entity(t_json_member *member);
+t_json_entity	*json_create_object_entity(t_json_object *object);
+t_json_entity	*json_create_array_entity(t_json_array *array);
 
 t_json_entity	*json_parse_null(const char *str);
 t_json_entity	*json_parse_bool(const char *str);
@@ -56,6 +55,10 @@ t_json_entity	*json_collect(const t_json_entity *entity,
 
 void			json_put_entity(const t_json_entity *entity);
 char			*json_to_string(const t_json_entity *entity);
+
+void			json_delete_member(t_json_member *member);
+void			json_delete_object(t_json_object *object);
+void			json_delete_array(t_json_array *array);
 
 void			json_delete_null_entity(t_json_entity *entity);
 void			json_delete_bool_entity(t_json_entity *entity);

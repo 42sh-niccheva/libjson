@@ -6,7 +6,7 @@
 /*   By: niccheva <niccheva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/04 11:05:22 by niccheva          #+#    #+#             */
-/*   Updated: 2016/09/12 17:23:01 by niccheva         ###   ########.fr       */
+/*   Updated: 2016/09/13 10:05:11 by niccheva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ struct							s_json_member
 
 struct							s_json_object
 {
-	t_json_member				*member;
+	t_json_entity				*member;
 	t_list						list;
 };
 
