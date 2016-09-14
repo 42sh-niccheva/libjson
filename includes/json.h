@@ -6,7 +6,7 @@
 /*   By: niccheva <niccheva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/12 17:24:53 by niccheva          #+#    #+#             */
-/*   Updated: 2016/09/13 13:51:13 by niccheva         ###   ########.fr       */
+/*   Updated: 2016/09/14 09:50:39 by niccheva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ t_json_object	*json_get_object(const t_json_entity *entity);
 t_json_array	*json_get_array(const t_json_entity *entity);
 
 void			json_for_each(const t_json_entity *entity,
-							t_json_for_each_function);
-
+							t_json_for_each_function func);
+/*
 t_json_entity	*json_collect(const t_json_entity *entity,
-							t_json_collect_function);
-
+							t_json_collect_function func);
+*/
 void			json_put_entity(const t_json_entity *entity);
 char			*json_to_string(const t_json_entity *entity);
 

@@ -6,7 +6,7 @@
 #    By: niccheva <niccheva@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/09 13:23:47 by niccheva          #+#    #+#              #
-#    Updated: 2016/09/13 14:24:28 by niccheva         ###   ########.fr        #
+#    Updated: 2016/09/14 09:39:46 by niccheva         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -68,6 +68,9 @@ SOURCES		+=	json_entity_size.c
 
 SOURCES		+=	json_get_entity_at.c
 SOURCES		+=	json_get_entity_with_key.c
+
+SOURCES		+=	json_for_each.c
+SOURCES		+=	json_collect.c
 
 OBJECTS		=	$(patsubst %.c, $(BUILD)/$(DOBJECTS)%.o, $(SOURCES))
 
